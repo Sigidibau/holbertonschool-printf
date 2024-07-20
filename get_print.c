@@ -10,11 +10,11 @@
 int (*get_print(char s))(va_list)
 		{
 	print func_arr[] = {
-		{'c', print_char};
-		{'s', print_string};
-		{'%', print_percent};
-		{'d', print_int};
-		{'i', print_int};
+		{'c', prt_char};
+		{'s', prt_string};
+		{'%', prt_percent};
+		{'d', prt_dec};
+		{'i', prt_int};
 		{NULL,NULL};
 	};
 
