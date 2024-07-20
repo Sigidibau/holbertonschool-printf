@@ -7,7 +7,7 @@
  *return: pointer to the matching print.
  */
 
-int (*get_print(char s))(int, int)
+int (*get_print(char s))(va_list)
 		{
 	print func_arr[] = {
 		{'c', print_char};
