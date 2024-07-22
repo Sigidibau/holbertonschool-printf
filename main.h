@@ -1,8 +1,10 @@
-#ifndef P_F
-#define P_F
+#ifndef Print_Func
+#define Print_Func
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <unistd.h>
 
 /**
  *
@@ -13,17 +15,20 @@
  *
  */
 
-typedef struct print
+typedef struct converter_s
 {
-        char c;
-        int (*f)(va_list ap);
-};print;
-:
+       unsigned char specifier;
+       unsigned int (*fun)(va_list ap);
+}convert_t;
+
 /*printf*/
 int _printf(const char *format, ...);
 
 /*get up*/
-int (*get_print(char s, flags_t *f);
+unsigned int (*get_specifier(const char *specifier))(va_list, unsigned char, int, int, unsigned char);
+
+/*putchar*/
+int _putchar(char c);
 
 #endif
 
