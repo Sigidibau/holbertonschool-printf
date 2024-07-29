@@ -1,34 +1,24 @@
-#ifndef Print_Func
-#define Print_Func
+#ifndef MAIN_H
+#define MAIN_H
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <stdarg.h>
 #include <unistd.h>
+#include <limits.h>
 
-/**
- *
- *
- *
- *
- *
- *
- */
-
-typedef struct converter_s
-{
-       unsigned char specifier;
-       unsigned int (*fun)(va_list ap);
-}convert_t;
-
-/*printf*/
-int _printf(const char *format, ...);
-
-/*get up*/
-unsigned int (*get_specifier(const char *specifier))(va_list, unsigned char, int, int, unsigned char);
-
-/*putchar*/
+/* Function prototypes */
 int _putchar(char c);
+int _printf(const char *format, ...);
+int (*op_print(char s))(va_list);
+int op_char(va_list args);
+int op_str(va_list args);
+int op_int(va_list args);
+int op_percent(va_list args);
+void print_number(int num);
+
+typedef struct specifier
+{
+    char spec;
+    int (*func)(va_list);
+} specifier_t;
 
 #endif
-
