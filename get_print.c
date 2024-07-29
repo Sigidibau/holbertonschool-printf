@@ -1,28 +1,28 @@
 #include "main.h"
 
 /**
- *get_print - choose the right 
- *@s: char with the specifier
- *eg: this func is going to loop the array of struct
- *return: pointer to the matching print.
+ * op_print - choose the correct function to print based on specifier
+ * @s: char with the specifier
+ * 
+ * Return: pointer to the matching print function.
  */
-
-unsigned int (*get_specifier(const char ))(va_list, unsigned char, int, int, unsigned char)
+int (*op_print(char s))(va_list)
 {
-	int i;
-	converter_t converters[] = {
-		{'c', convert_c},
-		{'s', convert_string},
-		{'%', convert_percent},
-		{'d', convert_dec},
-		{'i', convert_int},
-		{NULL,NULL},
-	};
+    specifier_t print[] = {
+        {'c', op_char},
+        {'s', op_str},
+        {'%', op_percent},
+        {'d', op_int},
+        {'i', op_int},
+        {'\0', NULL}
+    };
 
-	for (i = 0; converters[i].func; i++)
-	{
-		if (converters[i].specifier == *specifier)
-			return (converters[i].func);
-	}
-	return (NULL);
+    int i;
+    for (i = 0; print[i].spec != '\0'; i++)
+    {
+        if (print[i].spec == s)
+            return (print[i].func);
+    }
+    return (NULL);
 }
+
